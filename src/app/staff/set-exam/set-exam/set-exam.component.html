@@ -1,0 +1,59 @@
+<div class="row">
+
+  <div class="col-sm-9">
+    <form name="frmChapters">
+      <div class="form-group row">
+        <label for="inputEmail3" class="col-sm-1 col-form-label">Chapters</label>
+        <div class="col-sm-6">
+          <select name="selChapters2342" class="form-control" [(ngModel)]="selectedChapter" (change)="onChapterChange()">
+            <option [value]="undefined">-- select chapter --</option>
+            <option *ngFor="let chapterd of chapters" [ngValue]="chapterd">{{ chapterd.number }} {{chapterd.name}}
+            </option>
+          </select>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="col-sm-3">
+    <button class="btn btn-link float-right"
+      (click)="showTestDetailsPopup()">View Test Details</button>
+  </div>
+</div>
+<div class="row mt-4">
+  <div class="col-sm-12">
+    <h3>
+    {{selectedChapter.number}}) {{selectedChapter.name}}
+  </h3>
+  </div>
+</div>
+<div class="row mt-4">
+  <div class="col-sm-12">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col"><input type="checkbox"></th>
+          <th scope="col">Question</th>
+          <th scope="col">Level</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let q of questions; let i = index;">
+          <td>{{i + 1}}</td>
+          <td><input type="checkbox"></td>
+          <td>{{q.question}}</td>
+          <td>{{q.level}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12 text-center">
+    <button class="btn btn-primary">Add</button>
+    <button class="btn btn-secondary ml-3">Cancel</button>
+  </div>
+</div>
+
